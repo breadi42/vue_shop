@@ -8,6 +8,12 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 // 树形表格组件
 import TreeTable from 'vue-table-with-tree-grid'
+// 导入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+// 导入富文本编辑器对应的样式
+import 'quill/dist/quill.core.css' // import styles
+import 'quill/dist/quill.snow.css' // for snow theme
+import 'quill/dist/quill.bubble.css' // for bubble theme
 // axios通信
 import axios from 'axios'
 // 配置请求的根路径
@@ -23,6 +29,27 @@ Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 Vue.component('tree-table', TreeTable)
+// 将富文本编辑器注册为全局可用的组件
+Vue.use(VueQuillEditor)
+
+// 接受一个时间戳，返回时间
+Vue.filter('dateFormat', function (originVal) {
+  // new一个Date对象
+  const date = new Date(originVal)
+  // 年
+  const year = date.getFullYear()
+  // 月，通过从后面连接一个空字符串，把date.getMonth()转换为字符串，当字符串的长度不足2时，前面补‘0’
+  const mouth = (date.getMonth() + '').padStart(2, '0')
+  // 日
+  const day = (date.getDate() + '').padStart(2, '0')
+  // 时
+  const hours = (date.getHours() + '').padStart(2, '0')
+  // 分
+  const minutes = (date.getMinutes() + '').padStart(2, '0')
+  // 秒
+  const seconds = (date.getSeconds() + '').padStart(2, '0')
+  return `${year}-${mouth}-${day} ${hours}:${minutes}:${seconds}`
+})
 
 new Vue({
   router,

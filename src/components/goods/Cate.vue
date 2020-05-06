@@ -46,7 +46,7 @@
         :page-sizes="[3, 5, 10, 15]"
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="total">
+        :total="total" background>
       </el-pagination>
     </el-card>
 
