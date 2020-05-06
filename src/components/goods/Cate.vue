@@ -17,7 +17,8 @@
       </el-row>
 
       <!-- 商品分类表格区域 -->
-      <tree-table :data="cateList" :columns="columns" :show-row-hover="false" :expand-type="false" :selection-type="false" show-index border class="tree-table">
+      <tree-table :data="cateList" :columns="columns" :show-row-hover="false" :expand-type="false"
+                  :selection-type="false" show-index border class="tree-table">
         <!-- 是否有效 -->
         <template slot="isok" slot-scope="scope">
           <i class="el-icon-success" style="color: green" v-if="scope.row.cat_deleted === false"></i>
@@ -31,8 +32,10 @@
         </template>
         <!-- 操作 -->
         <template slot="opt" slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini" @click="showEditDialog(scope.row.cat_id)">编辑</el-button>
-          <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeCateById(scope.row.cat_id)">删除</el-button>
+          <el-button type="primary" icon="el-icon-edit" size="mini" @click="showEditDialog(scope.row.cat_id)">编辑
+          </el-button>
+          <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeCateById(scope.row.cat_id)">删除
+          </el-button>
         </template>
       </tree-table>
       <!-- 页码区域 -->
@@ -110,11 +113,26 @@ export default {
       total: 0,
       // 为商品分类表格指定每一列的属性
       columns: [
-        { label: '分类名称', prop: 'cat_name' },
+        {
+          label: '分类名称',
+          prop: 'cat_name'
+        },
         // type: 'template'表示将这一列定义为模板，template: 'isok'表示模板名称
-        { label: '是否有效', type: 'template', template: 'isok' },
-        { label: '分类等级', type: 'template', template: 'order' },
-        { label: '操作', type: 'template', template: 'opt' }
+        {
+          label: '是否有效',
+          type: 'template',
+          template: 'isok'
+        },
+        {
+          label: '分类等级',
+          type: 'template',
+          template: 'order'
+        },
+        {
+          label: '操作',
+          type: 'template',
+          template: 'opt'
+        }
       ],
       // 控制添加分类对话框的显示与隐藏
       addCateDialogVisible: false,
@@ -130,7 +148,11 @@ export default {
       // 添加分类表单验证规则对象
       addCateFormRules: {
         cat_name: [
-          { required: true, message: '请填写分类名称', trigger: 'blur' }
+          {
+            required: true,
+            message: '请填写分类名称',
+            trigger: 'blur'
+          }
         ]
       },
       // 父级分类列表
@@ -144,7 +166,11 @@ export default {
       // 编辑分类的表单验证规则对象
       editCateFormRules: {
         cat_name: [
-          { required: true, message: '请填写分类名称', trigger: 'blur' }
+          {
+            required: true,
+            message: '请填写分类名称',
+            trigger: 'blur'
+          }
         ]
       }
     }
@@ -285,6 +311,7 @@ export default {
   .tree-table {
     margin-top: 15px;
   }
+
   .el-cascader {
     width: 100%;
   }
