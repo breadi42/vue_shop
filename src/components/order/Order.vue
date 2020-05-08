@@ -34,9 +34,9 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template>
-            <el-button type="primary" icon="el-icon-edit" size="mini" @click="showBox"></el-button>
-            <el-button type="success" icon="el-icon-location" size="mini" @click="showProgressBox"></el-button>
+          <template slot-scope="scope">
+            <el-button type="primary" icon="el-icon-edit" size="mini" @click="showBox(scope.row)"></el-button>
+            <el-button type="success" icon="el-icon-location" size="mini" @click="showProgressBox(scope.row)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -58,7 +58,7 @@
       width="50%" @close="addressDialogClosed">
       <el-form :model="addressForm" :rules="addressFormRules" ref="addressFormRef" label-width="100px">
         <el-form-item label="省市区/县" prop="address1">
-          <el-cascader :options="cityData" v-model="addressForm.address1" :props="{ expandTrigger: 'hover' }"></el-cascader>
+          <el-cascader :options="cityData" v-model="addressForm.address1" expand-trigger="hover" ></el-cascader>
         </el-form-item>
         <el-form-item label="详细地址" prop="address2">
           <el-input v-model="addressForm.address2"></el-input>
@@ -66,7 +66,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="addressDialogVisible = false">取 消</el-button>
-       <el-button type="primary" @click="addressDialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="addressDialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
     <!-- 查看物流进度对话框 -->

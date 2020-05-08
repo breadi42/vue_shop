@@ -24,7 +24,8 @@
           <el-cascader
             v-model="selectedCateKeys"
             :options="cateList"
-            :props="{ expandTrigger: 'hover', value: 'cat_id', label: 'cat_name', children: 'children' }"
+            expand-trigger="hover"
+            :props="{ value: 'cat_id', label: 'cat_name', children: 'children' }"
             @change="handleChange"></el-cascader>
         </el-col>
       </el-row>
